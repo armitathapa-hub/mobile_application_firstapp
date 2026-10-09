@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newdemosecd/pages/detailpage.dart';
 
 class  dashboard extends StatefulWidget {
   const dashboard ({super.key});
@@ -10,9 +11,29 @@ class  dashboard extends StatefulWidget {
 class _dashboardState extends State<dashboard> {
 
   horizontallistitem(size, String title, url, date){
-    return Stack(
-      children: [
-        Container(
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(
+          MaterialPageRoute<void>(
+            builder: (context) => detailpage(),
+          ),
+        );
+      },
+      child: Stack(
+        children: [
+          Container(
+              height: size.height/4.5,
+              width: size.width/1.4,
+              margin: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  color: Colors.black54,
+                  borderRadius: BorderRadius.circular(12)
+              ),
+              child: ClipRRect(
+                  borderRadius: BorderRadiusGeometry.circular(12),
+                  child: Image.network(fit: BoxFit.cover,url),),
+          ),
+          Container(
             height: size.height/4.5,
             width: size.width/1.4,
             margin: EdgeInsets.all(15),
@@ -20,40 +41,29 @@ class _dashboardState extends State<dashboard> {
                 color: Colors.black54,
                 borderRadius: BorderRadius.circular(12)
             ),
-            child: ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(12),
-                child: Image.network(fit: BoxFit.cover,url),),
-        ),
-        Container(
-          height: size.height/4.5,
-          width: size.width/1.4,
-          margin: EdgeInsets.all(15),
-          decoration: BoxDecoration(
-              color: Colors.black54,
-              borderRadius: BorderRadius.circular(12)
           ),
-        ),
-        Positioned(
-          bottom: 45,
-          left: 20,
-          child: Container(
-            width: size.width/2,
-            child: Text(title,
-              overflow: TextOverflow.ellipsis,maxLines: 2,
+          Positioned(
+            bottom: 45,
+            left: 20,
+            child: Container(
+              width: size.width/2,
+              child: Text(title,
+                overflow: TextOverflow.ellipsis,maxLines: 2,
+                style: TextStyle(color: Colors.white,fontSize: 18, fontWeight: FontWeight.bold),),
+            ),
+          ),
+          Positioned(
+            bottom: 15,
+            left: 20,
+            child: Text(date,
               style: TextStyle(color: Colors.white,fontSize: 18, fontWeight: FontWeight.bold),),
           ),
-        ),
-        Positioned(
-          bottom: 15,
-          left: 20,
-          child: Text(date,
-            style: TextStyle(color: Colors.white,fontSize: 18, fontWeight: FontWeight.bold),),
-        ),
-        Positioned(
-            bottom: 30,right: 30,
-            child: Icon(Icons.play_circle_fill_outlined,color:
-            Colors.white,size: 40,))
-      ],
+          Positioned(
+              bottom: 30,right: 30,
+              child: Icon(Icons.play_circle_fill_outlined,color:
+              Colors.white,size: 40,))
+        ],
+      ),
     );
   }
 
