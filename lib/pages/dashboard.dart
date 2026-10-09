@@ -15,6 +15,7 @@ class _dashboardState extends State<dashboard> {
       appBar: AppBar(),
       body: Column(
         children: [
+          // horizontal scroll items
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
@@ -248,26 +249,410 @@ class _dashboardState extends State<dashboard> {
               ],
             ),
           ),
-          Row(
-            children: [
-              Column(
+
+          // vertical scroll items
+          Container(
+            height: size.height/1.6,
+            child: SingleChildScrollView(
+              child: Column(
                 children: [
-                  Container(
-                    height: 90,
-                    width: 120,
-                    margin: EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(12)
-                    ),
-                    child:ClipRRect(
-                      borderRadius: BorderRadius.circular(12),
-                        child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
-                  )
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: 90,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadius.circular(12)
+                            ),
+                            child:ClipRRect(
+                              borderRadius: BorderRadius.circular(12),
+                                child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
+                          ),
+                          Container(
+                            height: 95,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                          child:Center(
+                              child: Icon(Icons.play_circle_fill_outlined,
+                                size: 40, color: Colors.white,),
+                          ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: size.width/2,
+                                child: Text("Beautiful Sunsets and Walking around the neighbourhood",maxLines: 2, overflow: TextOverflow.ellipsis),),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10,
+                                  top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Text("Scenario", style: TextStyle(color: Colors.white),),
+                                ),
+                                SizedBox(width: 12,),
+                                Text("Oct 9, 2026",),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                              height: 90,
+                              width: 120,
+                              margin: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(12)
+                              ),
+                              child:ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
+                          ),
+                          Container(
+                            height: 95,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                            child:Center(
+                              child: Icon(Icons.play_circle_fill_outlined,
+                                size: 40, color: Colors.white,),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: size.width/2,
+                              child: Text("Beautiful Sunsets and Walking around the neighbourhood",maxLines: 2, overflow: TextOverflow.ellipsis),),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10,
+                                      top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Text("Scenario", style: TextStyle(color: Colors.white),),
+                                ),
+                                SizedBox(width: 12,),
+                                Text("Oct 9, 2026",),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                              height: 90,
+                              width: 120,
+                              margin: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(12)
+                              ),
+                              child:ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
+                          ),
+                          Container(
+                            height: 95,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                            child:Center(
+                              child: Icon(Icons.play_circle_fill_outlined,
+                                size: 40, color: Colors.white,),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: size.width/2,
+                              child: Text("Beautiful Sunsets and Walking around the neighbourhood",maxLines: 2, overflow: TextOverflow.ellipsis),),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10,
+                                      top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Text("Scenario", style: TextStyle(color: Colors.white),),
+                                ),
+                                SizedBox(width: 12,),
+                                Text("Oct 9, 2026",),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                              height: 90,
+                              width: 120,
+                              margin: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(12)
+                              ),
+                              child:ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
+                          ),
+                          Container(
+                            height: 95,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                            child:Center(
+                              child: Icon(Icons.play_circle_fill_outlined,
+                                size: 40, color: Colors.white,),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: size.width/2,
+                              child: Text("Beautiful Sunsets and Walking around the neighbourhood",maxLines: 2, overflow: TextOverflow.ellipsis),),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10,
+                                      top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Text("Scenario", style: TextStyle(color: Colors.white),),
+                                ),
+                                SizedBox(width: 12,),
+                                Text("Oct 9, 2026",),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                              height: 90,
+                              width: 120,
+                              margin: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(12)
+                              ),
+                              child:ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
+                          ),
+                          Container(
+                            height: 95,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                            child:Center(
+                              child: Icon(Icons.play_circle_fill_outlined,
+                                size: 40, color: Colors.white,),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: size.width/2,
+                              child: Text("Beautiful Sunsets and Walking around the neighbourhood",maxLines: 2, overflow: TextOverflow.ellipsis),),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10,
+                                      top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Text("Scenario", style: TextStyle(color: Colors.white),),
+                                ),
+                                SizedBox(width: 12,),
+                                Text("Oct 9, 2026",),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                              height: 90,
+                              width: 120,
+                              margin: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(12)
+                              ),
+                              child:ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
+                          ),
+                          Container(
+                            height: 95,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                            child:Center(
+                              child: Icon(Icons.play_circle_fill_outlined,
+                                size: 40, color: Colors.white,),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: size.width/2,
+                              child: Text("Beautiful Sunsets and Walking around the neighbourhood",maxLines: 2, overflow: TextOverflow.ellipsis),),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10,
+                                      top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Text("Scenario", style: TextStyle(color: Colors.white),),
+                                ),
+                                SizedBox(width: 12,),
+                                Text("Oct 9, 2026",),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                              height: 90,
+                              width: 120,
+                              margin: EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                  color: Colors.black54,
+                                  borderRadius: BorderRadius.circular(12)
+                              ),
+                              child:ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(fit: BoxFit.cover,"https://i.pinimg.com/736x/23/76/3f/23763fa025a445bd9af5585e6ee38c34.jpg"))
+                          ),
+                          Container(
+                            height: 95,
+                            width: 120,
+                            margin: EdgeInsets.all(15),
+                            child:Center(
+                              child: Icon(Icons.play_circle_fill_outlined,
+                                size: 40, color: Colors.white,),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        height: 80,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: size.width/2,
+                              child: Text("Beautiful Sunsets and Walking around the neighbourhood",maxLines: 2, overflow: TextOverflow.ellipsis),),
+                            Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.only(left: 10, right: 10,
+                                      top: 8, bottom: 8),
+                                  decoration: BoxDecoration(
+                                      color: Colors.red,
+                                      borderRadius: BorderRadius.circular(20)
+                                  ),
+                                  child: Text("Scenario", style: TextStyle(color: Colors.white),),
+                                ),
+                                SizedBox(width: 12,),
+                                Text("Oct 9, 2026",),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
-              )
-            ],
-          )
+              ),
+            ),
+          ),
+
         ],
       ),
     );
