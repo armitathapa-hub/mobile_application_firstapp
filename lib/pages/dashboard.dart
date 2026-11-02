@@ -4,7 +4,6 @@ import 'package:newdemosecd/pages/detailpage.dart';
 
 import '../core/staticfile.dart';
 import '../model/news.dart';
-import 'package:smart_date_formatter/smart_date_formatter.dart';
 
 class dashboard extends StatefulWidget {
   const dashboard({super.key});

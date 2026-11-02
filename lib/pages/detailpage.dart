@@ -4,7 +4,6 @@ import 'package:newdemosecd/pages/dashboard.dart';
 import '../controller/apicall.dart';
 import '../core/staticfile.dart';
 import '../model/news.dart';
-import 'package:smart_date_formatter/smart_date_formatter.dart';
 
 class detailpage extends StatefulWidget {
   const detailpage({super.key});
@@ -87,7 +86,7 @@ class _detailpageState extends State<detailpage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(data.author!),
-                        Text(data.publishedAt!)
+                        Text(Staticfile.dateconverter(data.publishedAt!))
                       ],
                   ),
                   SizedBox(height: 10,),
