@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:newdemosecd/pages/dashboard.dart';
 
+import '../controller/apicall.dart';
+import '../core/staticfile.dart';
+import '../model/news.dart';
+import 'package:smart_date_formatter/smart_date_formatter.dart';
+
 class detailpage extends StatefulWidget {
   const detailpage({super.key});
 
@@ -10,9 +15,17 @@ class detailpage extends StatefulWidget {
 
 class _detailpageState extends State<detailpage> {
 
+  Future<news?>? futurenewsdata;
+  @override
+  void initState() {
+    super.initState();
+    futurenewsdata= Apicall().getnewsdata();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+    var data = Staticfile.article;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -25,7 +38,7 @@ class _detailpageState extends State<detailpage> {
                   width: size.width,
                   child: Image.network(
                     fit: BoxFit.cover,
-                    "https://i.pinimg.com/736x/1c/60/68/1c6068fb6efba5ee5c091d52c3836b19.jpg",
+                    data!.urlToImage!
                   ),
                 ),
                 Container(
@@ -33,9 +46,14 @@ class _detailpageState extends State<detailpage> {
                   width: size.width,
                   color: Colors.black54,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Icon(Icons.arrow_back, color: Colors.white, size: 36),
+                GestureDetector(
+                  onTap:(){
+                    Navigator.pop(context);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(Icons.arrow_back, color: Colors.white, size: 36),
+                  ),
                 ),
                 Positioned(
                   right: 10,
@@ -57,24 +75,24 @@ class _detailpageState extends State<detailpage> {
                 ),
               ],
             ),
-            SizedBox(height: 15),
+            SizedBox(height: 15,),
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("A beautiful orange garden and a fountain The bird is attracted to the orange garden A beautiful orange garden and a fountain", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),maxLines: 2, overflow: TextOverflow.ellipsis,),
+                  Text(data.title!, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),maxLines: 2, overflow: TextOverflow.ellipsis,),
                   SizedBox(height: 10,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Author: Rosabeee"),
-                        Text("12 Oct, 2026")
-                      ]
+                        Text(data.author!),
+                        Text(data.publishedAt!)
+                      ],
                   ),
                   SizedBox(height: 10,),
                   Text(
-                    "A beautiful orange garden and a fountain. The bird is attracted to the orange garden A beautiful orange garden and a fountain. The bird is attracted to the orange garden.",
+                    data.description!,
                   ),
                 ],
               ),
@@ -89,42 +107,43 @@ class _detailpageState extends State<detailpage> {
                 Text("Related Videos", style: TextStyle(fontSize: 18),),
               ],
             ),
-            dashboardState.verticallistitem(
-                size,
-                "A beautiful orange garden and a fountain. The bird is attracted to the orange garden",
-                "https://i.pinimg.com/736x/1c/60/68/1c6068fb6efba5ee5c091d52c3836b19.jpg",
-                "Oct 13, 2026",
-                "Scenario"),
-            dashboardState.verticallistitem(
-                size,
-                "A beautiful orange garden and a fountain. The bird is attracted to the orange garden",
-                "https://i.pinimg.com/736x/1c/60/68/1c6068fb6efba5ee5c091d52c3836b19.jpg",
-                "Oct 13, 2026",
-                "Scenario"),
-            dashboardState.verticallistitem(
-                size,
-                "A beautiful orange garden and a fountain. The bird is attracted to the orange garden",
-                "https://i.pinimg.com/736x/1c/60/68/1c6068fb6efba5ee5c091d52c3836b19.jpg",
-                "Oct 13, 2026",
-                "Scenario"),
-            dashboardState.verticallistitem(
-                size,
-                "A beautiful orange garden and a fountain. The bird is attracted to the orange garden",
-                "https://i.pinimg.com/736x/1c/60/68/1c6068fb6efba5ee5c091d52c3836b19.jpg",
-                "Oct 13, 2026",
-                "Scenario"),
-            dashboardState.verticallistitem(
-                size,
-                "A beautiful orange garden and a fountain. The bird is attracted to the orange garden",
-                "https://i.pinimg.com/736x/1c/60/68/1c6068fb6efba5ee5c091d52c3836b19.jpg",
-                "Oct 13, 2026",
-                "Scenario"),
-            dashboardState.verticallistitem(
-                size,
-                "A beautiful orange garden and a fountain. The bird is attracted to the orange garden",
-                "https://i.pinimg.com/736x/1c/60/68/1c6068fb6efba5ee5c091d52c3836b19.jpg",
-                "Oct 13, 2026",
-                "Scenario"),
+            FutureBuilder(future: futurenewsdata,
+                builder: (context, AsyncSnapshot<news?> snapshot ){
+                  switch(snapshot.connectionState){
+                    case ConnectionState.active:
+                    case ConnectionState.none:
+                    case ConnectionState.waiting:
+                      return CircularProgressIndicator();
+                    case ConnectionState.done:
+                      if(snapshot.hasData){
+                        var data = snapshot.data;
+                        //ui dekhaune
+                        return Column(
+                            children:[
+                              Container(
+                                height: size.height/1.6,
+                                child: ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: data!.articles!.length,
+                                    itemBuilder: (BuildContext context, int index) {
+                                      return dashboardState.verticallistitem(
+                                          context, size,
+                                          data.articles![index].title!.toUpperCase(),
+                                          data.articles![index].urlToImage,
+                                          data.articles![index].publishedAt!.split("T")[0],
+                                          data.articles![index].source!.name,
+                                          data.articles![index]);
+                                    }
+                                ),
+                              ),
+                            ]
+                        );
+                      }else{
+                        return Center(child: Text("No Date"),);
+                      }
+                  }
+                }),
           ],
         ),
       ),

@@ -1,3 +1,7 @@
+import 'package:smart_date_formatter/smart_date_formatter.dart';
+
+import '../model/news.dart';
+
 class Staticfile {
   // https://newsapi.org/v2/everything
   // ?q=apple
@@ -9,4 +13,18 @@ class Staticfile {
   static String baseUrl= 'newsapi.org';
   static String path = '/v2/everything';
 
+  static Articles? article;
+  static String dateconverter (String date){
+    if(date.isEmpty || date == "" || date == ""){
+      return "";
+    }
+    try {
+      DateTime formatt = DateTime.parse(date);
+      var formatted = formatt.toReadable;
+      return formatted.toString();
+    }
+    catch(e){
+      return "";
+    }
+  }
 }
